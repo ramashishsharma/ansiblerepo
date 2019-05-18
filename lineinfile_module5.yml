@@ -1,0 +1,13 @@
+---
+- name: lineinfile module5 example
+  hosts: all 
+  becomes: yes
+  tasks:
+  
+    template:
+      src: new.j2
+      dest: /tmp/firstfile.txt
+      notify: myhandler
+
+    - name: force all notified handlers to run at this point
+      meta: flush_handlers

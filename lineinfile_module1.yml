@@ -1,0 +1,11 @@
+---
+- name: lineinfile module1 example
+  hosts: all
+  become: yes
+  tasks:
+    - name: ensure selinux is set to enforcing mode
+      lineinfile:
+        path: /etc/selinux/config
+        regexp: '^SELINUX='
+        line: SELINUX=enforcing
+        backup: yes

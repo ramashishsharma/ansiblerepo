@@ -1,0 +1,15 @@
+---
+- name: lineinfile module example
+  hosts: all
+  become: yes
+  tasks:
+    - name: replace a localhost entry with our own
+      lineinfile:
+         path: /etc/hosts
+         regexp: '^4\.4\.4\.4'
+         line: 8.8.8.8 google google.com
+         owner: root
+         group: root
+         mode: '0644'
+         backup: yes
+         backrefs: yes

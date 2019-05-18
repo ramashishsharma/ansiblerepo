@@ -1,0 +1,10 @@
+---
+- name: lineinfile module4 example
+  hosts: all
+  become: yes
+  tasks:
+    - name: Add a line to a file if the file does not exist
+      lineinfile:
+        path: /tmp/testfile
+        line: 192.168.1.99 foo.lab.net foo
+        create: yes

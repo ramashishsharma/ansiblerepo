@@ -1,0 +1,11 @@
+---
+- name: lineinfile module2 example
+  hosts: all
+  become: yes
+  tasks:
+    - name: make sure wheel group is not in sudoers file
+      lineinfile:
+        path: /etc/sudoers
+        state: absent
+        regexp: '^%wheel'
+        backup: yes
